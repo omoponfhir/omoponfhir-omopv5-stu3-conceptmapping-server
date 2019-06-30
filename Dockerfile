@@ -1,22 +1,8 @@
 #Build the Maven project
 FROM maven:3.5.2-alpine as builder
 
-# install git
-RUN apk update && apk upgrade && \
-    apk add --no-cache bash git openssh
-
+COPY . /usr/src/app
 WORKDIR /usr/src/app
-RUN git clone https://github.com/omoponfhir/omoponfhir-omopv5-jpabase.git
-RUN git clone https://github.com/omoponfhir/omoponfhir-omopv5-stu3-mapping.git
-COPY . /usr/src/app/omoponfhir-omopv5-stu3-conceptmapping-server
-
-WORKDIR /usr/src/app/omoponfhir-omopv5-jpabase
-RUN mvn install
-
-WORKDIR /usr/src/app/omoponfhir-omopv5-stu3-mapping
-RUN mvn install
-
-WORKDIR /usr/src/app/omoponfhir-omopv5-stu3-conceptmapping-server
 RUN mvn install
 
 #Build the Tomcat container
