@@ -3,14 +3,14 @@ FROM maven:3.5.2-alpine as builder
 WORKDIR /usr/src/app
 RUN git clone https://github.com/omoponfhir/omoponfhir-omopv5-jpabase.git
 WORKDIR /usr/src/app/omoponfhir-omopv5-jpabase
-RUN mvn clean install
+RUN mvn install
 
 RUN git clone https://github.com/omoponfhir/omoponfhir-omopv5-stu3-mapping.git
 WORKDIR /usr/src/app/omoponfhir-omopv5-stu3-mapping
-RUN mvn clean install
+RUN mvn install
 
 WORKDIR /usr/src/app/omoponfhir-omopv5-stu3-conceptmapping-server
-RUN mvn clean install
+RUN mvn install
 
 #Build the Tomcat container
 FROM tomcat:alpine
