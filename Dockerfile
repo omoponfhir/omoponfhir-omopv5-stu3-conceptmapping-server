@@ -1,8 +1,8 @@
 #Build the Maven project
 FROM maven:3.5.2-alpine as builder
-COPY ../omoponfhir-omopv5-jpabase /usr/src/app/omoponfhir-omopv5-jpabase
-COPY ../omoponfhir-omopv5-stu3-mapping /usr/src/app/omoponfhir-omopv5-stu3-mapping
-COPY ../omoponfhir-main /usr/src/app/omoponfhir-main
+WORKDIR /usr/src/app
+RUN git clone https://github.com/omoponfhir/omoponfhir-omopv5-jpabase.git
+RUN git clone https://github.com/omoponfhir/omoponfhir-omopv5-stu3-mapping.git
 COPY . /usr/src/app/omoponfhir-main
 
 WORKDIR /usr/src/app/omoponfhir-main
