@@ -1,12 +1,14 @@
 #Build the Maven project
 FROM maven:3.5.2-alpine as builder
+# install git
+RUN apk update && apk upgrade && \
+    apk add --no-cache bash git openssh
+
 WORKDIR /usr/src/app
 RUN git clone https://github.com/omoponfhir/omoponfhir-omopv5-jpabase.git
 RUN git clone https://github.com/omoponfhir/omoponfhir-omopv5-stu3-mapping.git
-COPY . /usr/src/app/omoponfhir-main
-
-WORKDIR /usr/src/app/omoponfhir-main
-RUN mvn clean install
+RUN git clone https://github.com/omoponfhir/omoponfhir-main.git
+COPY . /usr/src/app/omoponfhir-omopv5-stu3-conceptmapping-server
 
 WORKDIR /usr/src/app/omoponfhir-omopv5-stu3-conceptmapping-server
 RUN mvn clean install
