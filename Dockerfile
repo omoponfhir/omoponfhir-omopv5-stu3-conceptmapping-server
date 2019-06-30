@@ -2,10 +2,11 @@
 FROM maven:3.5.2-alpine as builder
 WORKDIR /usr/src/app
 RUN git clone https://github.com/omoponfhir/omoponfhir-omopv5-jpabase.git
-RUN git clone https://github.com/omoponfhir/omoponfhir-omopv5-stu3-mapping.git
-COPY . /usr/src/app/omoponfhir-main
+WORKDIR /usr/src/app/omoponfhir-omopv5-jpabase
+RUN mvn clean install
 
-WORKDIR /usr/src/app/omoponfhir-main
+RUN git clone https://github.com/omoponfhir/omoponfhir-omopv5-stu3-mapping.git
+WORKDIR /usr/src/app/omoponfhir-omopv5-stu3-mapping
 RUN mvn clean install
 
 WORKDIR /usr/src/app/omoponfhir-omopv5-stu3-conceptmapping-server
