@@ -31,7 +31,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.WebApplicationContext;
 
-import edu.gatech.chai.smart.jpa.service.SmartOnFhirLaunchContextService;
+//import edu.gatech.chai.smart.jpa.service.SmartOnFhirLaunchContextService;
 import io.jsonwebtoken.Header;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
@@ -51,7 +51,7 @@ public class SmartAuthServicesController {
 
 	private String client_id;
 	private String client_secret;
-	private SmartOnFhirLaunchContextService mySmartOnFhirContextService;
+//	private SmartOnFhirLaunchContextService mySmartOnFhirContextService;
 	private String jwtSecret;
 	private String smartStyleUrl;
 	private boolean simEhr;
