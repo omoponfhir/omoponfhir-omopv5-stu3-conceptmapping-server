@@ -32,7 +32,9 @@
 	</repositories>
 
 	<properties>
-		<hapi_stable_version>[3.8.0,)</hapi_stable_version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<hapi_stable_version>3.6.0</hapi_stable_version>
 		<hapi_current_version>3.6.0-SNAPSHOT</hapi_current_version>
 		<thymeleaf-version>3.0.9.RELEASE</thymeleaf-version>
 		<spring_version>5.0.8.RELEASE</spring_version>
@@ -247,6 +249,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.3</version>
 				<configuration>
 					<overlays>
 						<overlay>
@@ -262,6 +265,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-deploy-plugin</artifactId>
+				<version>3.0.0-M1</version>
 				<configuration>
 					<skip>false</skip>
 				</configuration>
