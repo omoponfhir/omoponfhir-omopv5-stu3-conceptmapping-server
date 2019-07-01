@@ -32,7 +32,7 @@ pipeline{
                 script{
                     docker.withRegistry('https://gt-build.hdap.gatech.edu'){
                         //Build and push the database image
-                        def theImage = docker.build("translateConcept:${env.BUILD_NUMBER}", "-f Dockerfile .")
+                        def theImage = docker.build("translateconcept:${env.BUILD_NUMBER}", "-f Dockerfile .")
                         theImage.push("${env.BUILD_NUMBER}")
                     }
                 }
@@ -43,7 +43,7 @@ pipeline{
         stage('Notify'){
             steps{
                 script{
-                    rancher confirm: true, credentialId: 'gt-rancher-server', endpoint: 'https://gt-rancher.hdap.gatech.edu/v2-beta', environmentId: '1a7', environments: '', image: "gt-build.hdap.gatech.edu/translateConcept:${env.BUILD_NUMBER}", ports: '', service: 'PACER/translateConcept', timeout: 50
+                    rancher confirm: true, credentialId: 'gt-rancher-server', endpoint: 'https://gt-rancher.hdap.gatech.edu/v2-beta', environmentId: '1a7', environments: '', image: "gt-build.hdap.gatech.edu/translateconcept:${env.BUILD_NUMBER}", ports: '', service: 'PACER/translateconcept', timeout: 50
                 }
             }
         }
