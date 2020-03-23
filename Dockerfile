@@ -13,6 +13,6 @@ RUN apk update
 RUN apk add zip postgresql-client
 
 # Copy GT-FHIR war file to webapps.
-COPY --from=builder /usr/src/app/target/omoponfhir-omopv5-stu3-conceptmapping-server.war $CATALINA_HOME/webapps/omoponfhir-conceptmapping.war
+COPY --from=builder /usr/src/app/target/omoponfhir-omopv5-stu3-conceptmapping-server.war $CATALINA_HOME/webapps/omoponfhir-translate.war
 
 EXPOSE 8080
